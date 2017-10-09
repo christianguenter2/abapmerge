@@ -1,4 +1,5 @@
 import File from "./file";
+import * as io from "io";
 
 export default class ClassList {
   private deferred: string;
@@ -14,6 +15,7 @@ export default class ClassList {
   }
 
   public push(f: File): void {
+    console.log(io.EOL);
     let match = f.getContents().match(/^((.|\n)*ENDCLASS\.)\s*(CLASS(.|\n)*)$/i);
     if (!match || !match[1] || !match[2] || !match[3]) {
       throw "error parsing class: " + f.getFilename();
